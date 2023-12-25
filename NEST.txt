@@ -1,0 +1,17 @@
+
+nest new project1 -> Crear nuevo proyecto
+nest generate module users -> Crear modulo users
+nest generate controller /users/controllers/users -> creano nuevo controlador dentro de carpetas
+npm i class-validator class-transformer -> para validacones al ingresar información
+nest g s /users/services/users -> generando servicios para inyección de dependencias
+
+nest g mi /users/middlewares/example -> creando middlewares
+
+TRANFORMANDO CON PIPES PERSONALIZADS
+nest g pipe /users/pipes/ValidateCreteUser => creando pipe
+
+Creando Guardas
+nest g guard /users/guards/Auth
+
+Interactuar con  db orm con mysql
+npm add @nestjs/typeorm typeorm mysql2
