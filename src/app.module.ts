@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 // import { config } from 'dotenv';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
@@ -20,7 +21,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       //'mongodb://127.0.0.1/nombre_bdd',// en el localhost
     ),
 
-    UsersModule, // Luego se crea el servicio con el repositorio
+    UsersModule,
+
+    PostsModule, // Luego se crea el servicio con el repositorio
   ],
   controllers: [],
   providers: [],

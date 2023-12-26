@@ -6,7 +6,7 @@ export class Post {
   title: string;
 
   @Prop({ required: true })
-  description: string;
+  content: string;
 }
 
-export const PostSchema = SchemaFactory.createForClass(Post)
+export const PostSchema = SchemaFactory.createForClass(Post);
