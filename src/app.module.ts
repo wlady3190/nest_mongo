@@ -1,15 +1,25 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
+// import { config } from 'dotenv';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://wlady3190:Wlady3190@wtcluster0.rnyvt4k.mongodb.net/?retryWrites=true&w=majority',
-
+    ConfigModule.forRoot(), // esto solo para .env
+    MongooseModule.forRootAsync(
+      // esto pasa .env, sin .env solo va forRoot
+      {
+        imports: [ConfigModule],
+        useFactory: async (configService: ConfigService) => ({
+          uri: configService.get<string>('MONGODB_URI'),
+        }),
+        inject: [ConfigService],
+      },
       // 'mongodb://user:password@127.0.0.1/nombre_bdd',
       //'mongodb://127.0.0.1/nombre_bdd',// en el localhost
     ),
+
     UsersModule, // Luego se crea el servicio con el repositorio
   ],
   controllers: [],
